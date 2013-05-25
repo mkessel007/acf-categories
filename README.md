@@ -41,4 +41,10 @@
 	<li>For now it only returns taxonomy object. So use only 'get_field' function.</li>
 </ul>
 <br>
+
+<h2>2.0.1 Beta</h2>
+<ul>
+	<li>Added mp6 admin theme option</li>
+</ul>
+<br>
 <i><cite><strong>Please report any bugs or requests on https://github.com/cubeweb/acf-categories/issues?state=open</strong></cite></i>

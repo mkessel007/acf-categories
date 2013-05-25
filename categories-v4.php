@@ -57,6 +57,12 @@
 		function create_field( $field ) {
 			// defaults?
 
+			$use_mp6 = $field['mp6'];
+
+			if ( $use_mp6 ) {
+				wp_enqueue_style( 'acf-input-categories-chosen-mp6' );
+			}
+
 			$field['value'] = isset( $field['value'] ) ? $field['value'] : '';
 			$type           = ( isset( $field['post_type'] ) ) ? ( empty( $field['post_type'] ) ? 'post' : $field['post_type'] ) : 'post';
 			$child_of       = ( isset( $field['child_of'] ) ) ? ( empty( $field['child_of'] ) ? 0 : $field['child_of'] ) : 0;
@@ -444,6 +450,28 @@
 				</td>
 			</tr>
 
+			<tr class="field_option field_option_<?php echo $this->name; ?>">
+				<td class="label">
+					<label><?php _e( "Use MP6 Skin", 'acf' ); ?></label>
+
+					<p class="description">If you are a fan of the <a href="http://wordpress.org/plugins/mp6/"
+																	  target="_blank">MP6</a> admin theme, then turn this option on to have full compatibility</p>
+				</td>
+				<td>
+					<?php do_action( 'acf/create_field', array(
+															  'type'    => 'radio',
+															  'name'    => 'fields[' . $key . '][mp6]',
+															  'value'   => $field['mp6'],
+															  'choices' => array(
+																  '1' => 'Yes',
+																  '0' => 'No',
+															  ),
+															  'layout'  => 'horizontal',
+														 ) );
+					?>
+				</td>
+			</tr>
+
 		<?php
 
 		}
@@ -576,6 +604,7 @@
 
 			wp_register_style( 'acf-input-categories', $this->settings['dir'] . 'css/input.css', array( 'acf-input' ), $this->settings['version'] );
 			wp_register_style( 'acf-input-categories-chosen', $this->settings['dir'] . 'css/chosen.css', array( 'acf-input' ), $this->settings['version'] );
+			wp_register_style( 'acf-input-categories-chosen-mp6', $this->settings['dir'] . 'css/chosen-mp6.css', array( 'acf-input' ), $this->settings['version'] );
 
 
 			// scripts

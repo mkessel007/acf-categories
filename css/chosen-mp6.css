@@ -1,0 +1,35 @@
+.chzn-container {
+	width: 99% !important;
+}
+
+.chzn-single, .chzn-drop, .chzn-container-multi {
+	background: none !important;
+	background-color: #e0e0e0 !important;
+	border-color: #dddddd !important;
+	border-radius: 0 !important;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10) !important;
+	padding: 1px 0 1px 8px !important;
+	font-size: 14px !important;
+}
+
+.chzn-choices {
+	background: none !important;
+	border: none !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	font-size: 14px !important;
+}
+
+.search-choice {
+	background: none !important;
+	background-color: #0074a2 !important;
+	border-color: #0074a2 !important;
+	border-radius: 0 !important;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10) !important;
+	font-size: 14px !important;
+	color: #ffffff !important;
+	padding-top: 2px !important;
+	padding-bottom: 5px !important;
+	display: block !important;
+	margin-top: 7px !important;
+}
