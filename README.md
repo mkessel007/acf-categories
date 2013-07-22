@@ -34,7 +34,7 @@
 <br>
 <h1>Changelog</h1>
 
-<h2>2.0.0 Beta</h2>
+<h2>2.0.0.0 Beta</h2>
 <ul>
 	<li>Added compatibility with ACF 4.0</li>
 	<li>Added chosen support</li>
@@ -42,7 +42,7 @@
 </ul>
 <br>
 
-<h2>2.0.1 Beta</h2>
+<h2>2.0.0.1 Beta</h2>
 <ul>
 	<li>Added mp6 admin theme option</li>
 </ul>
