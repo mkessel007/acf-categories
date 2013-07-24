@@ -1,4 +1,4 @@
-(function( $ ) {
+(function( jQuery ) {
 
 
 	/*
@@ -16,30 +16,39 @@
 	 *  @return	N/A
 	 */
 
-	$( document ).live( 'acf/setup_fields', function( e, postbox ) {
-		$( '.chzn-select' ).chosen();
+	jQuery( document ).live( 'acf/setup_fields', function( e, postbox ) {
 
-		$( '.select-all' ).click( function() {
-			$( '.chzn-select option' ).prop( 'selected', true );
-			$( '.chzn-select' ).trigger( 'liszt:updated' );
+		jQuery( postbox ).find( '.acf-categories' ).each( function() {
 
-			return false;
-		} );
+			jQuery( this ).find( '.chzn-select' ).chosen();
 
-		$( '.deselect-all' ).click( function() {
-			$( '.chzn-select option' ).prop( 'selected', false );
-			$( '.chzn-select' ).trigger( 'liszt:updated' );
+			jQuery( this ).find( '.select-all' ).click( function() {
+				jQuery( this ).parent().parent().find( '.chzn-select option' ).prop( 'selected', true );
+				jQuery( this ).parent().parent().find( '.chzn-select' ).trigger( 'liszt:updated' );
 
-			return false;
-		} );
+				return false;
+			} );
 
-		$( postbox ).find( '.my-field-class' ).each( function() {
+			jQuery( '.deselect-all' ).click( function() {
+				jQuery( this ).parent().parent().find( '.chzn-select option' ).prop( 'selected', false );
+				jQuery( this ).parent().parent().find( '.chzn-select' ).trigger( 'liszt:updated' );
 
-			// initiate JS on my field!
-			// $(this).add_awesome_stuff();
+				return false;
+			} );
 
 		} );
 
+
+		jQuery( '.add-row-end' ).on( 'click', function() {
+			var clonedInput = jQuery( this ).parent().parent().parent().find( '.acf-input-table tr' ).last();
+
+			clonedInput.find( 'div.chzn-container' ).remove();
+			clonedInput.find( '.chzn-select' ).show();
+			clonedInput.find( '.chzn-select' ).removeAttr( 'id' );
+			clonedInput.find( '.chzn-select' ).removeAttr( 'data-placeholder' );
+			clonedInput.find( '.chzn-select' ).removeClass( 'chzndone' );
+			clonedInput.find( '.chzn-select' ).chosen();
+		} );
 	} );
 
 })( jQuery );

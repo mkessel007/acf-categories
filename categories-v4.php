@@ -100,7 +100,7 @@
 				$is_multiple    = '[]';
 			} ?>
 
-			<div>
+			<div class="acf-categories">
 				<?php if ( $multiple == 1 ) : ?>
 					<div class="cat-buttons">
 						<a href="#" class="select-all">Select All</a>
@@ -203,11 +203,11 @@
 						}
 
 						do_action( 'acf/create_field', array(
-															'type'    => 'select',
-															'name'    => 'fields[' . $key . '][post_type]',
-															'value'   => $field['post_type'],
-															'choices' => $types
-													   ) );
+						                                    'type'    => 'select',
+						                                    'name'    => 'fields[' . $key . '][post_type]',
+						                                    'value'   => $field['post_type'],
+						                                    'choices' => $types
+						                               ) );
 						unset( $types );
 					?>
 				</td>
@@ -225,10 +225,10 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'  => 'text',
-															  'name'  => 'fields[' . $key . '][child_of]',
-															  'value' => $field['child_of'],
-														 ) );
+					                                          'type'  => 'text',
+					                                          'name'  => 'fields[' . $key . '][child_of]',
+					                                          'value' => $field['child_of'],
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -245,10 +245,10 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'  => 'text',
-															  'name'  => 'fields[' . $key . '][parent]',
-															  'value' => $field['parent'],
-														 ) );
+					                                          'type'  => 'text',
+					                                          'name'  => 'fields[' . $key . '][parent]',
+					                                          'value' => $field['parent'],
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -265,16 +265,16 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'    => 'select',
-															  'name'    => 'fields[' . $key . '][orderby]',
-															  'value'   => $field['orderby'],
-															  'choices' => array(
-																  'id'    => 'Category ID',
-																  'name'  => 'Category Title',
-																  'slug'  => 'Category Slug',
-																  'count' => 'Categories Count'
-															  )
-														 ) );
+					                                          'type'    => 'select',
+					                                          'name'    => 'fields[' . $key . '][orderby]',
+					                                          'value'   => $field['orderby'],
+					                                          'choices' => array(
+						                                          'id'    => 'Category ID',
+						                                          'name'  => 'Category Title',
+						                                          'slug'  => 'Category Slug',
+						                                          'count' => 'Categories Count'
+					                                          )
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -291,15 +291,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'    => 'radio',
-															  'name'    => 'fields[' . $key . '][order]',
-															  'value'   => $field['order'],
-															  'choices' => array(
-																  'ASC'  => 'Asc',
-																  'DESC' => 'Desc',
-															  ),
-															  'layout'  => 'horizontal',
-														 ) );
+					                                          'type'    => 'radio',
+					                                          'name'    => 'fields[' . $key . '][order]',
+					                                          'value'   => $field['order'],
+					                                          'choices' => array(
+						                                          'ASC'  => 'Asc',
+						                                          'DESC' => 'Desc',
+					                                          ),
+					                                          'layout'  => 'horizontal',
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -316,15 +316,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'    => 'radio',
-															  'name'    => 'fields[' . $key . '][hide_empty]',
-															  'value'   => $field['hide_empty'],
-															  'choices' => array(
-																  '1' => 'Yes',
-																  '0' => 'No',
-															  ),
-															  'layout'  => 'horizontal',
-														 ) );
+					                                          'type'    => 'radio',
+					                                          'name'    => 'fields[' . $key . '][hide_empty]',
+					                                          'value'   => $field['hide_empty'],
+					                                          'choices' => array(
+						                                          '1' => 'Yes',
+						                                          '0' => 'No',
+					                                          ),
+					                                          'layout'  => 'horizontal',
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -341,15 +341,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'    => 'radio',
-															  'name'    => 'fields[' . $key . '][hierarchical]',
-															  'value'   => $field['hierarchical'],
-															  'choices' => array(
-																  '1' => 'Yes',
-																  '0' => 'No',
-															  ),
-															  'layout'  => 'horizontal',
-														 ) );
+					                                          'type'    => 'radio',
+					                                          'name'    => 'fields[' . $key . '][hierarchical]',
+					                                          'value'   => $field['hierarchical'],
+					                                          'choices' => array(
+						                                          '1' => 'Yes',
+						                                          '0' => 'No',
+					                                          ),
+					                                          'layout'  => 'horizontal',
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -378,11 +378,11 @@
 						}
 
 						do_action( 'acf/create_field', array(
-															'type'    => 'select',
-															'name'    => 'fields[' . $key . '][taxonomy]',
-															'value'   => $field['taxonomy'],
-															'choices' => $taxonomies
-													   ) );
+						                                    'type'    => 'select',
+						                                    'name'    => 'fields[' . $key . '][taxonomy]',
+						                                    'value'   => $field['taxonomy'],
+						                                    'choices' => $taxonomies
+						                               ) );
 
 						unset( $taxonomies );
 					?>
@@ -401,10 +401,10 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'  => 'text',
-															  'name'  => 'fields[' . $key . '][include]',
-															  'value' => $field['include'],
-														 ) );
+					                                          'type'  => 'text',
+					                                          'name'  => 'fields[' . $key . '][include]',
+					                                          'value' => $field['include'],
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -421,10 +421,10 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'  => 'text',
-															  'name'  => 'fields[' . $key . '][exclude]',
-															  'value' => $field['exclude'],
-														 ) );
+					                                          'type'  => 'text',
+					                                          'name'  => 'fields[' . $key . '][exclude]',
+					                                          'value' => $field['exclude'],
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -437,15 +437,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'    => 'radio',
-															  'name'    => 'fields[' . $key . '][multiple]',
-															  'value'   => $field['multiple'],
-															  'choices' => array(
-																  '1' => 'Yes',
-																  '0' => 'No',
-															  ),
-															  'layout'  => 'horizontal',
-														 ) );
+					                                          'type'    => 'radio',
+					                                          'name'    => 'fields[' . $key . '][multiple]',
+					                                          'value'   => $field['multiple'],
+					                                          'choices' => array(
+						                                          '1' => 'Yes',
+						                                          '0' => 'No',
+					                                          ),
+					                                          'layout'  => 'horizontal',
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -455,19 +455,19 @@
 					<label><?php _e( "Use MP6 Skin", 'acf' ); ?></label>
 
 					<p class="description">If you are a fan of the <a href="http://wordpress.org/plugins/mp6/"
-																	  target="_blank">MP6</a> admin theme, then turn this option on to have full compatibility</p>
+					                                                  target="_blank">MP6</a> admin theme, then turn this option on to have full compatibility</p>
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-															  'type'    => 'radio',
-															  'name'    => 'fields[' . $key . '][mp6]',
-															  'value'   => $field['mp6'],
-															  'choices' => array(
-																  '1' => 'Yes',
-																  '0' => 'No',
-															  ),
-															  'layout'  => 'horizontal',
-														 ) );
+					                                          'type'    => 'radio',
+					                                          'name'    => 'fields[' . $key . '][mp6]',
+					                                          'value'   => $field['mp6'],
+					                                          'choices' => array(
+						                                          '1' => 'Yes',
+						                                          '0' => 'No',
+					                                          ),
+					                                          'layout'  => 'horizontal',
+					                                     ) );
 					?>
 				</td>
 			</tr>
@@ -565,11 +565,18 @@
 			$object          = array();
 
 			if ( $multiple == 1 ) {
-				foreach ( $selected_values as $value ) {
-					array_push( $object, get_term_by( 'id', $value, $taxonomy ) );
+				if ( is_array( $selected_values ) ) {
+					if ( ! empty( $selected_values ) ) {
+						foreach ( $selected_values as $value ) {
+							array_push( $object, get_term_by( 'id', $value, $taxonomy ) );
+						}
+					}
 				}
 
-				$value = $object;
+				if ( ! empty( $object ) ) {
+					$value = $object;
+				}
+
 			} else {
 				$value = get_term_by( 'id', $selected_values, $taxonomy );
 			}
@@ -609,15 +616,15 @@
 
 			// scripts
 			wp_enqueue_script( array(
-									'acf-input-categories',
-									'acf-input-categories-chosen'
-							   ) );
+			                        'acf-input-categories',
+			                        'acf-input-categories-chosen'
+			                   ) );
 
 			// styles
 			wp_enqueue_style( array(
-								   'acf-input-categories',
-								   'acf-input-categories-chosen'
-							  ) );
+			                       'acf-input-categories',
+			                       'acf-input-categories-chosen'
+			                  ) );
 		}
 
 
@@ -723,6 +730,7 @@
 
 		function update_value( $value, $post_id, $field ) {
 			// Note: This function can be removed if not used
+
 			return $value;
 		}
 
