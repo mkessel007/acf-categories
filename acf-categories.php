@@ -3,7 +3,7 @@
 	Plugin Name: Advanced Custom Fields: Categories
 	Plugin URI: https://github.com/cubeweb/acf-addons
 	Description: Categories is custom field that generates a multi drop down with all the categories or taxonomies from your wordpress site
-	Version: 2.0.0 Beta
+	Version: 2.0.0.2 Beta
 	Author: Cubeweb
 	Author URI: http://www.cubeweb.gr
 	License: GPLv2 or later

@@ -18,36 +18,45 @@
 
 	jQuery( document ).live( 'acf/setup_fields', function( e, postbox ) {
 
-		jQuery( postbox ).find( '.acf-categories' ).each( function() {
-
-			jQuery( this ).find( '.chzn-select' ).chosen();
-
-			jQuery( this ).find( '.select-all' ).click( function() {
-				jQuery( this ).parent().parent().find( '.chzn-select option' ).prop( 'selected', true );
-				jQuery( this ).parent().parent().find( '.chzn-select' ).trigger( 'liszt:updated' );
-
-				return false;
+		jQuery( '.cat-toggle-btn' ).click( function() {
+			var $cat_container = jQuery( this ).parent().parent().find( '.cat-container' );
+			var $cat_toggle = jQuery( this ).parent().find( '.cat-toggle-btn' );
+			$cat_container.slideToggle( 300, function() {
+				if ( $cat_container.is( ':hidden' ) ) {
+					$cat_toggle.html( '+ Show Categories' );
+				} else {
+					$cat_toggle.html( '- Hide Categories' );
+				}
 			} );
 
-			jQuery( '.deselect-all' ).click( function() {
-				jQuery( this ).parent().parent().find( '.chzn-select option' ).prop( 'selected', false );
-				jQuery( this ).parent().parent().find( '.chzn-select' ).trigger( 'liszt:updated' );
-
-				return false;
-			} );
-
+			return false;
 		} );
 
+		jQuery( this ).find( '.select-all' ).click( function() {
+			var $acfCheckbox = jQuery( this ).parent().parent().find( '.cat-categories-check' );
+			$acfCheckbox.attr( 'checked', 'checked' );
 
-		jQuery( '.add-row-end' ).on( 'click', function() {
-			var clonedInput = jQuery( this ).parent().parent().parent().find( '.acf-input-table tr' ).last();
+			return false;
+		} );
 
-			clonedInput.find( 'div.chzn-container' ).remove();
-			clonedInput.find( '.chzn-select' ).show();
-			clonedInput.find( '.chzn-select' ).removeAttr( 'id' );
-			clonedInput.find( '.chzn-select' ).removeAttr( 'data-placeholder' );
-			clonedInput.find( '.chzn-select' ).removeClass( 'chzndone' );
-			clonedInput.find( '.chzn-select' ).chosen();
+		jQuery( '.deselect-all' ).click( function() {
+			var $acfCheckbox = jQuery( this ).parent().parent().find( '.cat-categories-check' );
+			$acfCheckbox.removeAttr( 'checked' );
+
+			return false;
+		} );
+
+		jQuery( '.select-main' ).click( function() {
+			var $acfCheckbox = jQuery( this ).parent().parent().find( '.cat-categories-check' );
+			var $acfMainCat = jQuery( this ).parent().parent().find( '.cat-categories-check' ).not( '.cat-subcategories-check' );
+			$acfCheckbox.removeAttr( 'checked' );
+			$acfMainCat.attr( 'checked', 'checked' );
+
+			return false;
+		} );
+
+		jQuery( postbox ).find( '.acf-categories' ).each( function() {
+
 		} );
 	} );
 

@@ -57,12 +57,6 @@
 		function create_field( $field ) {
 			// defaults?
 
-			$use_mp6 = $field['mp6'];
-
-			if ( $use_mp6 ) {
-				wp_enqueue_style( 'acf-input-categories-chosen-mp6' );
-			}
-
 			$field['value'] = isset( $field['value'] ) ? $field['value'] : '';
 			$type           = ( isset( $field['post_type'] ) ) ? ( empty( $field['post_type'] ) ? 'post' : $field['post_type'] ) : 'post';
 			$child_of       = ( isset( $field['child_of'] ) ) ? ( empty( $field['child_of'] ) ? 0 : $field['child_of'] ) : 0;
@@ -75,6 +69,7 @@
 			$orderby        = ( isset( $field['orderby'] ) ) ? ( empty( $field['orderby'] ) ? 'name' : $field['orderby'] ) : 'name';
 			$order          = ( isset( $field['order'] ) ) ? ( empty( $field['order'] ) ? 'ASC' : $field['order'] ) : 'ASC';
 			$multiple       = isset( $field['multiple'] ) ? $field['multiple'] : '0';
+			$start_state    = isset( $field['start_state'] ) ? $field['start_state'] : '1';
 
 			$args = array(
 				'type'         => $type,
@@ -90,51 +85,68 @@
 				'pad_counts'   => 1
 			);
 
-			$categories      = get_categories( $args );
-			$selected_values = $field['value'];
-			$allow_multiple  = '';
-			$is_multiple     = '';
-
-			if ( $multiple == 1 ) {
-				$allow_multiple = 'multiple="multiple"';
-				$is_multiple    = '[]';
-			} ?>
+			$categories = get_categories( $args );
+			$value      = $field['value']; ?>
 
 			<div class="acf-categories">
+				<!-- Single Value -->
+				<?php if ( $multiple == 0 ) : ?>
+					<label for="<?php echo $field['name'] ?>"></label>
+					<select id="<?php echo $field['name'] ?>" class="<?php echo $field['class'] ?>" name="<?php echo $field['name']; ?>">
+						<?php foreach ( $categories as $category ) : ?>
+							<?php if ( $category->term_id == $value ) {
+								$is_selected = 'selected="selected"';
+							} else {
+								$is_selected = '';
+							} ?>
+							<option value="<?php echo $category->term_id; ?>" <?php echo $is_selected; ?>><?php echo $category->name; ?></option>
+						<?php endforeach ?>
+					</select>
+				<?php endif; ?>
+				<!-- End of Single Value -->
+
+				<!-- Multiple Values -->
 				<?php if ( $multiple == 1 ) : ?>
-					<div class="cat-buttons">
-						<a href="#" class="select-all">Select All</a>
-						<a href="#" class="deselect-all">Clear All</a>
+					<?php
+					if ( $start_state == 1 ) {
+						$start_state_class = 'block';
+						$start_state_label = '- Hide Categories';
+					} else {
+						$start_state_class = 'none';
+						$start_state_label = '+ Show Categories';
+					}
+					?>
+
+					<div class="cat-toggle">
+						<a href="#" class="cat-toggle-btn"><?php echo $start_state_label; ?></a>
+					</div>
+
+					<div class="cat-container" style="display: <?php echo $start_state_class; ?>">
+						<div class="cat-buttons">
+							<a href="#" class="select-all">Select All</a>
+							<a href="#" class="deselect-all">Clear All</a>
+							<a href="#" class="select-main">Select Main Categories</a>
+						</div>
+
+						<ul class="acf-categories-list">
+							<?php foreach ( $categories as $category ) : ?>
+								<?php $is_subcategory = $category->category_parent ? true : false; ?>
+								<?php $subcategory_class = $category->category_parent ? '<span class="acf-subcategory">-</span>' : ''; ?>
+								<?php if ( in_array( $category->term_id, $value ) ) {
+									$is_selected = 'checked';
+								} else {
+									$is_selected = '';
+								} ?>
+
+								<li>
+									<label for="<?php echo $field['name'] ?>"></label>
+									<input id="<?php echo $field['name'] ?>" type="checkbox" class="cat-categories-check <?php echo $is_subcategory ? 'cat-subcategories-check' : ''; ?>" value="<?php echo $category->term_id; ?>" name="<?php echo $field['name'] . '[]' ?>" <?php echo $is_selected ?>/><?php echo $subcategory_class . '' . $category->name; ?>
+								</li>
+							<?php endforeach; ?>
+						</ul>
 					</div>
 				<?php endif; ?>
-
-				<label for="<?php echo $field['name'] ?>"></label>
-				<select id="<?php echo $field['name'] ?>" class="<?php echo $field['class'] ?> chzn-select" <?php echo $allow_multiple ?> name="<?php echo $field['name'] . $is_multiple ?>">
-					<?php foreach ( $categories as $category ) : ?>
-						<?php if ( $multiple == 1 ) : ?>
-
-							<!-- Multiple values -->
-							<?php if ( in_array( $category->term_id, $selected_values ) ) {
-								$is_selected = 'selected="selected"';
-							} else {
-								$is_selected = '';
-							} ?>
-							<option value="<?php echo $category->term_id; ?>" <?php echo $is_selected; ?>><?php echo $category->name; ?></option>
-							<!-- End of Multiple values -->
-
-						<?php else : ?>
-							<!-- Single Value -->
-							<?php if ( $category->term_id == $selected_values ) {
-								$is_selected = 'selected="selected"';
-							} else {
-								$is_selected = '';
-							} ?>
-							<option value="<?php echo $category->term_id; ?>" <?php echo $is_selected; ?>><?php echo $category->name; ?></option>
-							<!-- End of Single Value -->
-
-						<?php endif; ?>
-					<?php endforeach ?>
-				</select>
+				<!-- End of Multiple Values -->
 			</div>
 		<?php
 		}
@@ -452,19 +464,20 @@
 
 			<tr class="field_option field_option_<?php echo $this->name; ?>">
 				<td class="label">
-					<label><?php _e( "Use MP6 Skin", 'acf' ); ?></label>
+					<label><?php _e( "Start State", 'acf' ); ?></label>
 
-					<p class="description">If you are a fan of the <a href="http://wordpress.org/plugins/mp6/"
-					                                                  target="_blank">MP6</a> admin theme, then turn this option on to have full compatibility</p>
+					<p class="description">
+						If multiple values you have a slide down layout. This option indicates whether the layout should start opened or closed
+					</p>
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
 					                                          'type'    => 'radio',
-					                                          'name'    => 'fields[' . $key . '][mp6]',
-					                                          'value'   => $field['mp6'],
+					                                          'name'    => 'fields[' . $key . '][start_state]',
+					                                          'value'   => $field['start_state'],
 					                                          'choices' => array(
-						                                          '1' => 'Yes',
-						                                          '0' => 'No',
+						                                          '1' => 'Opened',
+						                                          '0' => 'Closed',
 					                                          ),
 					                                          'layout'  => 'horizontal',
 					                                     ) );
@@ -607,23 +620,18 @@
 
 			// register acf scripts
 			wp_register_script( 'acf-input-categories', $this->settings['dir'] . 'js/input.js', array( 'acf-input' ), $this->settings['version'] );
-			wp_register_script( 'acf-input-categories-chosen', $this->settings['dir'] . 'js/chosen.jquery.min.js', array( 'acf-input' ), $this->settings['version'] );
 
 			wp_register_style( 'acf-input-categories', $this->settings['dir'] . 'css/input.css', array( 'acf-input' ), $this->settings['version'] );
-			wp_register_style( 'acf-input-categories-chosen', $this->settings['dir'] . 'css/chosen.css', array( 'acf-input' ), $this->settings['version'] );
-			wp_register_style( 'acf-input-categories-chosen-mp6', $this->settings['dir'] . 'css/chosen-mp6.css', array( 'acf-input' ), $this->settings['version'] );
 
 
 			// scripts
 			wp_enqueue_script( array(
-			                        'acf-input-categories',
-			                        'acf-input-categories-chosen'
+			                        'acf-input-categories'
 			                   ) );
 
 			// styles
 			wp_enqueue_style( array(
-			                       'acf-input-categories',
-			                       'acf-input-categories-chosen'
+			                       'acf-input-categories'
 			                  ) );
 		}
 

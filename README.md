@@ -2,19 +2,15 @@
 
 <ul>
 	<li>Contributors: <a href="http://www.cubeweb.gr" target="_blank">Cubeweb</a></li>
-	<li>Tags:</li>
 	<li>Requires at least: 3.4</li>
-	<li>Tested up to: 3.5.1</li>
-	<li>Stable tag: trunk</li>
+	<li>Tested up to: 3.5.2</li>
 	<li>License: GPLv2 or later</li>
 	<li>License URI: http://www.gnu.org/licenses/gpl-2.0.html</li>
 </ul>
 
-<br><img src="http://www.cubeweb.gr/wp-projects/previews/categories_1.png" alt=""/>
-<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/categories_2.png" alt=""/>
-<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/categories_3.png" alt=""/>
-<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/categories_4.png" alt=""/>
-<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/categories_5.png" alt=""/>
+<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/screenshot-1.png" alt=""/>
+<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/screenshot-2.png" alt=""/>
+<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/screenshot-3.png" alt=""/>
 
 <br><br>
 <h1>Compatibility</h1>
@@ -32,6 +28,11 @@
 	<li>Activate the plugin via the Plugins admin page</li>
 </ol>
 <br>
+
+<h1>Usage</h1>
+It returns taxonomy object. So use 'get_field' function or 'get_sub_field' if inside a repeater'.
+<br><br><br>
+
 <h1>Changelog</h1>
 
 <h2>2.0.0.0 Beta</h2>
@@ -45,6 +46,20 @@
 <h2>2.0.0.1 Beta</h2>
 <ul>
 	<li>Added mp6 admin theme option</li>
+</ul>
+
+<br>
+<h2>2.0.0.2 Beta</h2>
+<ul>
+	<li><h3>Removed</h3></li>
+	<li>Chosen plug-in. After a talk with the chosen team I understood that chosen will not work correctly inside the repeater field.</li>
+	<li>Mp6 admin theme option. Since there is no chosen anym ore there is no reason for that option.</li>
+	<li><h3>Added</h3></li>
+	<li>Multiple checkboxes</li>
+	<li>Multiple: Select All button</li>
+	<li>Multiple: Clear All button</li>
+	<li>Multiple: Select Select Main Categories button</li>
+	<li>Multiple: Show/Hide categories button</li>
 </ul>
 <br>
 <i><cite><strong>Please report any bugs or requests on https://github.com/cubeweb/acf-categories/issues?state=open</strong></cite></i>
