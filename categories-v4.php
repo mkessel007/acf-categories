@@ -70,6 +70,7 @@
 			$order          = ( isset( $field['order'] ) ) ? ( empty( $field['order'] ) ? 'ASC' : $field['order'] ) : 'ASC';
 			$multiple       = isset( $field['multiple'] ) ? $field['multiple'] : '0';
 			$start_state    = isset( $field['start_state'] ) ? $field['start_state'] : '1';
+			$post_count     = isset( $field['post_count'] ) ? $field['post_count'] : '0';
 
 			$args = array(
 				'type'         => $type,
@@ -94,12 +95,20 @@
 					<label for="<?php echo $field['name'] ?>"></label>
 					<select id="<?php echo $field['name'] ?>" class="<?php echo $field['class'] ?>" name="<?php echo $field['name']; ?>">
 						<?php foreach ( $categories as $category ) : ?>
+							<?php
+							if ( $post_count == 1 ) {
+								$cat_count = ' (' . $category->category_count . ')';
+							} else {
+								$cat_count = '';
+							}
+							?>
+
 							<?php if ( $category->term_id == $value ) {
 								$is_selected = 'selected="selected"';
 							} else {
 								$is_selected = '';
 							} ?>
-							<option value="<?php echo $category->term_id; ?>" <?php echo $is_selected; ?>><?php echo $category->name; ?></option>
+							<option value="<?php echo $category->term_id; ?>" <?php echo $is_selected; ?>><?php echo $category->name . '' . $cat_count; ?></option>
 						<?php endforeach ?>
 					</select>
 				<?php endif; ?>
@@ -131,7 +140,15 @@
 						<ul class="acf-categories-list">
 							<?php foreach ( $categories as $category ) : ?>
 								<?php $is_subcategory = $category->category_parent ? true : false; ?>
+								<?php
+								if ( $post_count == 1 ) {
+									$cat_count = '<span class="cat-post-count">' . $category->category_count . '</span>';
+								} else {
+									$cat_count = '';
+								}
+								?>
 								<?php $subcategory_class = $category->category_parent ? '<span class="acf-subcategory">-</span>' : ''; ?>
+
 								<?php if ( in_array( $category->term_id, $value ) ) {
 									$is_selected = 'checked';
 								} else {
@@ -140,7 +157,7 @@
 
 								<li>
 									<label for="<?php echo $field['name'] ?>"></label>
-									<input id="<?php echo $field['name'] ?>" type="checkbox" class="cat-categories-check <?php echo $is_subcategory ? 'cat-subcategories-check' : ''; ?>" value="<?php echo $category->term_id; ?>" name="<?php echo $field['name'] . '[]' ?>" <?php echo $is_selected ?>/><?php echo $subcategory_class . '' . $category->name; ?>
+									<input id="<?php echo $field['name'] ?>" type="checkbox" class="cat-categories-check <?php echo $is_subcategory ? 'cat-subcategories-check' : ''; ?>" value="<?php echo $category->term_id; ?>" name="<?php echo $field['name'] . '[]' ?>" <?php echo $is_selected ?>/><?php echo $subcategory_class . '' . $category->name . '' . $cat_count; ?>
 								</li>
 							<?php endforeach; ?>
 						</ul>
@@ -177,6 +194,8 @@
 			$field['ret_val']      = isset( $field['ret_val'] ) ? $field['ret_val'] : 'category_slug';
 			$field['orderby']      = isset( $field['orderby'] ) ? $field['orderby'] : 'id';
 			$field['order']        = isset( $field['order'] ) ? $field['order'] : 'ASC';
+			$field['post_count']   = isset( $field['post_count'] ) ? $field['post_count'] : '0';
+			$field['start_state']  = isset( $field['start_state'] ) ? $field['start_state'] : '1';
 
 			/*
 			$field = array_merge($this->defaults, $field);
@@ -485,6 +504,27 @@
 				</td>
 			</tr>
 
+			<tr class="field_option field_option_<?php echo $this->name; ?>">
+				<td class="label">
+					<label><?php _e( "Display Posts Count", 'acf' ); ?></label>
+
+					<p class="description">Display a post count indicator next to each category</p>
+				</td>
+				<td>
+					<?php do_action( 'acf/create_field', array(
+					                                          'type'    => 'radio',
+					                                          'name'    => 'fields[' . $key . '][post_count]',
+					                                          'value'   => $field['post_count'],
+					                                          'choices' => array(
+						                                          '1' => 'Yes',
+						                                          '0' => 'No',
+					                                          ),
+					                                          'layout'  => 'horizontal',
+					                                     ) );
+					?>
+				</td>
+			</tr>
+
 		<?php
 
 		}
@@ -574,27 +614,28 @@
 			// Note: This function can be removed if not used
 			$multiple        = isset( $field['multiple'] ) ? $field['multiple'] : '0';
 			$taxonomy        = ( isset( $field['taxonomy'] ) ) ? ( empty( $field['taxonomy'] ) ? 'category' : $field['taxonomy'] ) : 'category';
-			$selected_values = $field['value'];
+			$selected_values = $value;
 			$object          = array();
+			$ret_value       = '';
 
 			if ( $multiple == 1 ) {
 				if ( is_array( $selected_values ) ) {
 					if ( ! empty( $selected_values ) ) {
-						foreach ( $selected_values as $value ) {
-							array_push( $object, get_term_by( 'id', $value, $taxonomy ) );
+						foreach ( $selected_values as $selected_value ) {
+							array_push( $object, get_term_by( 'id', $selected_value, $taxonomy ) );
 						}
 					}
 				}
 
 				if ( ! empty( $object ) ) {
-					$value = $object;
+					$ret_value = $object;
 				}
 
 			} else {
-				$value = get_term_by( 'id', $selected_values, $taxonomy );
+				$ret_value = get_term_by( 'id', $value, $taxonomy );
 			}
 
-			return $value;
+			return $ret_value;
 		}
 
 
