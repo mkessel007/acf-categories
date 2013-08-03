@@ -2,8 +2,8 @@
 
 <ul>
 	<li>Contributors: <a href="http://www.cubeweb.gr" target="_blank">Cubeweb</a></li>
-	<li>Requires at least: 3.4</li>
-	<li>Tested up to: 3.5.2</li>
+	<li>Requires at least: 3.5</li>
+	<li>Tested up to: 3.6.0</li>
 	<li>License: GPLv2 or later</li>
 	<li>License URI: http://www.gnu.org/licenses/gpl-2.0.html</li>
 </ul>
@@ -45,7 +45,8 @@ It returns taxonomy object. So use 'get_field' function or 'get_sub_field' if in
 
 <h2>2.0.0.1 Beta</h2>
 <ul>
-	<li>Added mp6 admin theme option</li>
+	<li><h3>Added</h3></li>
+	<li>mp6 admin theme option</li>
 </ul>
 
 <br>
@@ -61,5 +62,14 @@ It returns taxonomy object. So use 'get_field' function or 'get_sub_field' if in
 	<li>Multiple: Select Select Main Categories button</li>
 	<li>Multiple: Show/Hide categories button</li>
 </ul>
+
+<br>
+
+<h2>2.0.0.3 Beta</h2>
+<ul>
+	<li><h3>Added</h3></li>
+	<li>Display Post Count option</li>
+</ul>
+
 <br>
 <i><cite><strong>Please report any bugs or requests on https://github.com/cubeweb/acf-categories/issues?state=open</strong></cite></i>
