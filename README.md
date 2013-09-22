@@ -3,7 +3,7 @@
 <ul>
 	<li>Contributors: <a href="http://www.cubeweb.gr" target="_blank">Cubeweb</a></li>
 	<li>Requires at least: 3.5</li>
-	<li>Tested up to: 3.6.0</li>
+	<li>Tested up to: 3.6.1</li>
 	<li>License: GPLv2 or later</li>
 	<li>License URI: http://www.gnu.org/licenses/gpl-2.0.html</li>
 </ul>
@@ -35,21 +35,20 @@ It returns taxonomy object. So use 'get_field' function or 'get_sub_field' if in
 
 <h1>Changelog</h1>
 
-<h2>2.0.0.0 Beta</h2>
+<h2>2.0.0.4</h2>
 <ul>
-	<li>Added compatibility with ACF 4.0</li>
-	<li>Added chosen support</li>
-	<li>For now it only returns taxonomy object. So use only 'get_field' function.</li>
+	<li><h3>Uodated</h3></li>
+	<li>Compatibility for WP 3.6.1</li>
 </ul>
-<br>
 
-<h2>2.0.0.1 Beta</h2>
+<h2>2.0.0.3 Beta</h2>
 <ul>
 	<li><h3>Added</h3></li>
-	<li>mp6 admin theme option</li>
+	<li>Display Post Count option</li>
 </ul>
 
 <br>
+
 <h2>2.0.0.2 Beta</h2>
 <ul>
 	<li><h3>Removed</h3></li>
@@ -65,10 +64,19 @@ It returns taxonomy object. So use 'get_field' function or 'get_sub_field' if in
 
 <br>
 
-<h2>2.0.0.3 Beta</h2>
+<h2>2.0.0.1 Beta</h2>
 <ul>
 	<li><h3>Added</h3></li>
-	<li>Display Post Count option</li>
+	<li>mp6 admin theme option</li>
+</ul>
+
+<br>
+
+<h2>2.0.0.0 Beta</h2>
+<ul>
+	<li>Added compatibility with ACF 4.0</li>
+	<li>Added chosen support</li>
+	<li>For now it only returns taxonomy object. So use only 'get_field' function.</li>
 </ul>
 
 <br>
