@@ -37,7 +37,7 @@ It returns taxonomy object. So use 'get_field' function or 'get_sub_field' if in
 
 <h2>2.0.0.4</h2>
 <ul>
-	<li><h3>Uodated</h3></li>
+	<li><h3>Updated</h3></li>
 	<li>Compatibility for WP 3.6.1</li>
 </ul>
 
