@@ -3,7 +3,7 @@
 <ul>
 	<li>Contributors: <a href="http://www.cubeweb.gr" target="_blank">Cubeweb</a></li>
 	<li>Requires at least: 3.5</li>
-	<li>Tested up to: 3.6.1</li>
+	<li>Tested up to: 3.7.1</li>
 	<li>License: GPLv2 or later</li>
 	<li>License URI: http://www.gnu.org/licenses/gpl-2.0.html</li>
 </ul>
