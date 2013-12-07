@@ -22,8 +22,8 @@
 			$this->label    = __( 'Categories' );
 			$this->category = __( "Relational", 'acf' ); // Basic, Content, Choice, etc
 			$this->defaults = array( // add default here to merge into your field.
-				// This makes life easy when creating the field options as you don't need to use any if( isset('') ) logic. eg:
-				//'preview_size' => 'thumbnail'
+			                         // This makes life easy when creating the field options as you don't need to use any if( isset('') ) logic. eg:
+			                         //'preview_size' => 'thumbnail'
 			);
 
 
@@ -141,15 +141,15 @@
 							<?php foreach ( $categories as $category ) : ?>
 								<?php $is_subcategory = $category->category_parent ? true : false; ?>
 								<?php
-								if ( $post_count == 1 ) {
-									$cat_count = '<span class="cat-post-count">' . $category->category_count . '</span>';
+								if ( $category->count == 1 ) {
+									$cat_count = '<a href="' . admin_url() . '/edit.php?category_name=' . $category->slug . '"><span class="cat-post-count">' . $category->category_count . '</span></a>';
 								} else {
 									$cat_count = '';
 								}
 								?>
 								<?php $subcategory_class = $category->category_parent ? '<span class="acf-subcategory">-</span>' : ''; ?>
 
-								<?php if ( in_array( $category->term_id, $value ) ) {
+								<?php if ( is_array( $value ) && in_array( $category->term_id, $value ) ) {
 									$is_selected = 'checked';
 								} else {
 									$is_selected = '';
@@ -234,11 +234,11 @@
 						}
 
 						do_action( 'acf/create_field', array(
-						                                    'type'    => 'select',
-						                                    'name'    => 'fields[' . $key . '][post_type]',
-						                                    'value'   => $field['post_type'],
-						                                    'choices' => $types
-						                               ) );
+							'type'    => 'select',
+							'name'    => 'fields[' . $key . '][post_type]',
+							'value'   => $field['post_type'],
+							'choices' => $types
+						) );
 						unset( $types );
 					?>
 				</td>
@@ -256,10 +256,10 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'  => 'text',
-					                                          'name'  => 'fields[' . $key . '][child_of]',
-					                                          'value' => $field['child_of'],
-					                                     ) );
+						'type'  => 'text',
+						'name'  => 'fields[' . $key . '][child_of]',
+						'value' => $field['child_of'],
+					) );
 					?>
 				</td>
 			</tr>
@@ -276,10 +276,10 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'  => 'text',
-					                                          'name'  => 'fields[' . $key . '][parent]',
-					                                          'value' => $field['parent'],
-					                                     ) );
+						'type'  => 'text',
+						'name'  => 'fields[' . $key . '][parent]',
+						'value' => $field['parent'],
+					) );
 					?>
 				</td>
 			</tr>
@@ -296,16 +296,16 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'    => 'select',
-					                                          'name'    => 'fields[' . $key . '][orderby]',
-					                                          'value'   => $field['orderby'],
-					                                          'choices' => array(
-						                                          'id'    => 'Category ID',
-						                                          'name'  => 'Category Title',
-						                                          'slug'  => 'Category Slug',
-						                                          'count' => 'Categories Count'
-					                                          )
-					                                     ) );
+						'type'    => 'select',
+						'name'    => 'fields[' . $key . '][orderby]',
+						'value'   => $field['orderby'],
+						'choices' => array(
+							'id'    => 'Category ID',
+							'name'  => 'Category Title',
+							'slug'  => 'Category Slug',
+							'count' => 'Categories Count'
+						)
+					) );
 					?>
 				</td>
 			</tr>
@@ -322,15 +322,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'    => 'radio',
-					                                          'name'    => 'fields[' . $key . '][order]',
-					                                          'value'   => $field['order'],
-					                                          'choices' => array(
-						                                          'ASC'  => 'Asc',
-						                                          'DESC' => 'Desc',
-					                                          ),
-					                                          'layout'  => 'horizontal',
-					                                     ) );
+						'type'    => 'radio',
+						'name'    => 'fields[' . $key . '][order]',
+						'value'   => $field['order'],
+						'choices' => array(
+							'ASC'  => 'Asc',
+							'DESC' => 'Desc',
+						),
+						'layout'  => 'horizontal',
+					) );
 					?>
 				</td>
 			</tr>
@@ -347,15 +347,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'    => 'radio',
-					                                          'name'    => 'fields[' . $key . '][hide_empty]',
-					                                          'value'   => $field['hide_empty'],
-					                                          'choices' => array(
-						                                          '1' => 'Yes',
-						                                          '0' => 'No',
-					                                          ),
-					                                          'layout'  => 'horizontal',
-					                                     ) );
+						'type'    => 'radio',
+						'name'    => 'fields[' . $key . '][hide_empty]',
+						'value'   => $field['hide_empty'],
+						'choices' => array(
+							'1' => 'Yes',
+							'0' => 'No',
+						),
+						'layout'  => 'horizontal',
+					) );
 					?>
 				</td>
 			</tr>
@@ -372,15 +372,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'    => 'radio',
-					                                          'name'    => 'fields[' . $key . '][hierarchical]',
-					                                          'value'   => $field['hierarchical'],
-					                                          'choices' => array(
-						                                          '1' => 'Yes',
-						                                          '0' => 'No',
-					                                          ),
-					                                          'layout'  => 'horizontal',
-					                                     ) );
+						'type'    => 'radio',
+						'name'    => 'fields[' . $key . '][hierarchical]',
+						'value'   => $field['hierarchical'],
+						'choices' => array(
+							'1' => 'Yes',
+							'0' => 'No',
+						),
+						'layout'  => 'horizontal',
+					) );
 					?>
 				</td>
 			</tr>
@@ -409,11 +409,11 @@
 						}
 
 						do_action( 'acf/create_field', array(
-						                                    'type'    => 'select',
-						                                    'name'    => 'fields[' . $key . '][taxonomy]',
-						                                    'value'   => $field['taxonomy'],
-						                                    'choices' => $taxonomies
-						                               ) );
+							'type'    => 'select',
+							'name'    => 'fields[' . $key . '][taxonomy]',
+							'value'   => $field['taxonomy'],
+							'choices' => $taxonomies
+						) );
 
 						unset( $taxonomies );
 					?>
@@ -432,10 +432,10 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'  => 'text',
-					                                          'name'  => 'fields[' . $key . '][include]',
-					                                          'value' => $field['include'],
-					                                     ) );
+						'type'  => 'text',
+						'name'  => 'fields[' . $key . '][include]',
+						'value' => $field['include'],
+					) );
 					?>
 				</td>
 			</tr>
@@ -452,10 +452,10 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'  => 'text',
-					                                          'name'  => 'fields[' . $key . '][exclude]',
-					                                          'value' => $field['exclude'],
-					                                     ) );
+						'type'  => 'text',
+						'name'  => 'fields[' . $key . '][exclude]',
+						'value' => $field['exclude'],
+					) );
 					?>
 				</td>
 			</tr>
@@ -468,15 +468,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'    => 'radio',
-					                                          'name'    => 'fields[' . $key . '][multiple]',
-					                                          'value'   => $field['multiple'],
-					                                          'choices' => array(
-						                                          '1' => 'Yes',
-						                                          '0' => 'No',
-					                                          ),
-					                                          'layout'  => 'horizontal',
-					                                     ) );
+						'type'    => 'radio',
+						'name'    => 'fields[' . $key . '][multiple]',
+						'value'   => $field['multiple'],
+						'choices' => array(
+							'1' => 'Yes',
+							'0' => 'No',
+						),
+						'layout'  => 'horizontal',
+					) );
 					?>
 				</td>
 			</tr>
@@ -491,15 +491,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'    => 'radio',
-					                                          'name'    => 'fields[' . $key . '][start_state]',
-					                                          'value'   => $field['start_state'],
-					                                          'choices' => array(
-						                                          '1' => 'Opened',
-						                                          '0' => 'Closed',
-					                                          ),
-					                                          'layout'  => 'horizontal',
-					                                     ) );
+						'type'    => 'radio',
+						'name'    => 'fields[' . $key . '][start_state]',
+						'value'   => $field['start_state'],
+						'choices' => array(
+							'1' => 'Opened',
+							'0' => 'Closed',
+						),
+						'layout'  => 'horizontal',
+					) );
 					?>
 				</td>
 			</tr>
@@ -512,15 +512,15 @@
 				</td>
 				<td>
 					<?php do_action( 'acf/create_field', array(
-					                                          'type'    => 'radio',
-					                                          'name'    => 'fields[' . $key . '][post_count]',
-					                                          'value'   => $field['post_count'],
-					                                          'choices' => array(
-						                                          '1' => 'Yes',
-						                                          '0' => 'No',
-					                                          ),
-					                                          'layout'  => 'horizontal',
-					                                     ) );
+						'type'    => 'radio',
+						'name'    => 'fields[' . $key . '][post_count]',
+						'value'   => $field['post_count'],
+						'choices' => array(
+							'1' => 'Yes',
+							'0' => 'No',
+						),
+						'layout'  => 'horizontal',
+					) );
 					?>
 				</td>
 			</tr>
@@ -667,13 +667,13 @@
 
 			// scripts
 			wp_enqueue_script( array(
-			                        'acf-input-categories'
-			                   ) );
+				'acf-input-categories'
+			) );
 
 			// styles
 			wp_enqueue_style( array(
-			                       'acf-input-categories'
-			                  ) );
+				'acf-input-categories'
+			) );
 		}
 
 

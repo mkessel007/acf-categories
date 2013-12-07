@@ -35,6 +35,20 @@ It returns taxonomy object. So use 'get_field' function or 'get_sub_field' if in
 
 <h1>Changelog</h1>
 
+<h2>2.0.0.6</h2>
+<ul>
+	<li><h3>Fixed</h3></li>
+	<li>Warning thrown on categories-v4 - in_array on line 152, thanks to americandriversafety</li>
+	<li><h3>Added</h3></li>
+	<li>Category link in post count indicator</li>
+</ul>
+
+<h2>2.0.0.5</h2>
+<ul>
+	<li><h3>Updated</h3></li>
+	<li>Compatibility for WP 3.7.1</li>
+</ul>
+
 <h2>2.0.0.4</h2>
 <ul>
 	<li><h3>Updated</h3></li>
