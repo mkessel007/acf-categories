@@ -8,10 +8,6 @@
 	<li>License URI: http://www.gnu.org/licenses/gpl-2.0.html</li>
 </ul>
 
-<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/screenshot-1.png" alt=""/>
-<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/screenshot-2.png" alt=""/>
-<br><br><br><img src="http://www.cubeweb.gr/wp-projects/previews/screenshot-3.png" alt=""/>
-
 <br><br>
 <h1>Compatibility</h1>
 
@@ -34,6 +30,18 @@ It returns taxonomy object. So use 'get_field' function or 'get_sub_field' if in
 <br><br><br>
 
 <h1>Changelog</h1>
+
+<h2>2.0.0.8 (Beta)</h2>
+<ul>
+	<li><h3>Added</h3></li>
+	<li>Update Post Categories option</li>
+</ul>
+
+<h2>2.0.0.7</h2>
+<ul>
+	<li><h3>Updated</h3></li>
+	<li>Compatibility for WP 3.9.1</li>
+</ul>
 
 <h2>2.0.0.6</h2>
 <ul>
