@@ -196,6 +196,7 @@
 			$field['order']        = isset( $field['order'] ) ? $field['order'] : 'ASC';
 			$field['post_count']   = isset( $field['post_count'] ) ? $field['post_count'] : '0';
 			$field['start_state']  = isset( $field['start_state'] ) ? $field['start_state'] : '1';
+			$field['update_cat']   = isset( $field['update_cat'] ) ? $field['update_cat'] : '0';
 
 			/*
 			$field = array_merge($this->defaults, $field);
@@ -525,6 +526,31 @@
 				</td>
 			</tr>
 
+			<tr class="field_option field_option_<?php echo $this->name; ?>">
+				<td class="label">
+					<label><?php _e( "Update Post Categories", 'acf' ); ?></label>
+
+					<p class="description">
+						<a href="https://codex.wordpress.org/Function_Reference/wp_set_post_terms"
+						   target="_blank">See Documentation
+						</a>
+					</p>
+				</td>
+				<td>
+					<?php do_action( 'acf/create_field', array(
+						'type'    => 'radio',
+						'name'    => 'fields[' . $key . '][update_cat]',
+						'value'   => $field['update_cat'],
+						'choices' => array(
+							'1' => 'Yes',
+							'0' => 'No',
+						),
+						'layout'  => 'horizontal',
+					) );
+					?>
+				</td>
+			</tr>
+
 		<?php
 
 		}
@@ -779,6 +805,13 @@
 
 		function update_value( $value, $post_id, $field ) {
 			// Note: This function can be removed if not used
+
+			$update_cat = ( isset( $field['update_cat'] ) ) ? ( empty( $field['update_cat'] ) ? '0' : $field['update_cat'] ) : '0';
+			$taxonomy = ( isset( $field['taxonomy'] ) ) ? ( empty( $field['taxonomy'] ) ? 'category' : $field['taxonomy'] ) : 'category';
+
+			if( $update_cat == 1 ) {
+				wp_set_post_terms( $post_id, $value, $taxonomy );
+			}
 
 			return $value;
 		}
