@@ -2,8 +2,8 @@
 Contributors: Cubeweb
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U8K34PRA8BW9W
 Tags: Advanced Custom Fields
-Requires at least: 3.5
-Tested up to: 4.2.1
+Requires at least: 4.0.0
+Tested up to: 4.2.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -52,42 +52,9 @@ Please report requests on https://github.com/cubeweb/acf-categories/issues?state
 3. screenshot-3.png
 
 == Changelog ==
-= 2.0.0.8 =
-* [Updated] Compatibility for WordPress 4.2.1
-* [Added] Sync with post categories (beta). Please sent your feedback here https://github.com/cubeweb/acf-categories/issues/6
 
-= 2.0.0.7 =
-* [Updated] Compatibility for WordPress 3.9.1
-
-= 2.0.0.6 =
-* [Fixed] Warning thrown on categories-v4 - in_array on line 152, thanks to https://github.com/americandriversafety
-* [Added] Category link in post count indicator
-
-= 2.0.0.5 =
-* [Updated] Compatibility for WordPress 3.7.1
-
-= 2.0.0.4 =
-* [Updated] Compatibility for WordPress 3.6.1
-
-= 2.0.0.3 Beta =
-* [Fixed] Sometimes returns false when in repeater field
-* [Added] Display Posts Count Option
-
-= 2.0.0.2 Beta =
-* [Removed] Chosen plug-in. After a talk with the chosen team I understood that chosen will not work correctly inside the repeater field.
-* [Removed] Mp6 admin theme option. Since there is no chosen anymore there is no reason for that option.
-* [Added] Multiple checkboxes
-* [Added] Multiple: Select All button
-* [Added] Multiple: Clear All button
-* [Added] Multiple: Select Select Main Categories button
-* [Added] Multiple: Show/Hide Categories button
-
-= 2.0.0.1 Beta =
-* [Added] mp6 admin theme option
-
-= 2.0.0.0 Beta =
-* [Added] Compatibility with ACF 4.0
-* [Added] Chosen support
+= 3.0.0.0 Beta =
+* [Added] Compatibility with ACF 5.0
 
 == Upgrade notice ==
 

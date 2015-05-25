@@ -2,7 +2,7 @@
 
 <ul>
 	<li>Contributors: <a href="http://www.cubeweb.gr" target="_blank">Cubeweb</a></li>
-	<li>Requires at least: 3.5</li>
+	<li>Requires at least: 4.0.0</li>
 	<li>Tested up to: 4.2.2</li>
 	<li>License: GPLv2 or later</li>
 	<li>License URI: http://www.gnu.org/licenses/gpl-2.0.html</li>
@@ -27,7 +27,7 @@
 
 <h1>Usage</h1>
 It returns taxonomy object. So use 'get_field' function or 'get_sub_field' if inside a repeater'.
-<br><br><br>
+<br><br>
 
 <h1>Changelog</h1>
 
